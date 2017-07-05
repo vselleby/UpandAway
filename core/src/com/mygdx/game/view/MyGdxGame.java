@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.view.states.GameStateManager;
 import com.mygdx.game.view.states.MenuState;
 
+import java.util.ArrayList;
+
 public class MyGdxGame extends ApplicationAdapter {
 	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
@@ -23,12 +25,15 @@ public class MyGdxGame extends ApplicationAdapter {
 		gsm = new GameStateManager();
 		Gdx.gl.glClearColor(0, .2f, 0, 1);
 		gsm.push(new MenuState(gsm));
+
 	}
+
+
 
 	@Override
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		gsm.update();
+		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
 	}
 	

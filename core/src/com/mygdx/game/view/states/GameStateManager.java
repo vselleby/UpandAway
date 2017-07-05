@@ -33,8 +33,8 @@ public class GameStateManager {
         activeState = state;
     }
 
-    public void update() {
-        states.peek().update();
+    public void update(float dt) {
+        states.peek().update(dt);
     }
 
     public void render(SpriteBatch batch) {
