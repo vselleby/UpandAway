@@ -22,15 +22,21 @@ public class PaddleHandler {
 
     public void generatePaddle(float hspeed, float vspeed, Texture paddleTexture, float width) {
         Random rand = new Random();
-        float xPos = rand.nextFloat() * 10;//*Gdx.graphics.getWidth();
-        Paddle pad = new Paddle(xPos, /*Gdx.graphics.getHeight() / 2*/ 100, width, hspeed, vspeed, paddleTexture);
+
+        float xPos = (rand.nextFloat() * (100f - width));
+
+        float w = Gdx.graphics.getWidth();
+        float h = Gdx.graphics.getHeight();
+        float yPos = (100 * (w/h));
+        Paddle pad = new Paddle(xPos, yPos , width, hspeed ,vspeed, paddleTexture);
         list.add(pad);
     }
 
     public void updatePaddles(float dt) {
-        for(Paddle p : list) {
+        for(Paddle p : new ArrayList<Paddle>(list)) {
             p.Update(dt);
             if(p.atBottom()) {
+                p.mySprite.getTexture().dispose();
                 p.getMyTexture().dispose();
                 list.remove(p);
             }
@@ -39,8 +45,10 @@ public class PaddleHandler {
 
     public void drawPaddles(SpriteBatch sb) {
         //sb.begin();
-        for (Paddle p : list) {
-            sb.draw(p.getMyTexture(), p.getX(), p.getY(), p.getX() + p.getWidth(), p.getY() + p.getHeight());
+        for (Paddle p : new ArrayList<Paddle>(list)) {
+            p.mySprite.draw(sb);
+
+            sb.draw(p.getMyTexture(), p.getX(), p.getY(), p.getWidth(), p.getHeight());
         }
         //sb.end();
     }

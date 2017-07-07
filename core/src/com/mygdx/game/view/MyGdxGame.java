@@ -11,8 +11,8 @@ import com.mygdx.game.view.states.MenuState;
 import java.util.ArrayList;
 
 public class MyGdxGame extends ApplicationAdapter {
-	public static final int WIDTH = 480;
-	public static final int HEIGHT = 800;
+	//public static final int WIDTH = Gdx.graphics.getWidth();
+	//public static final int HEIGHT = Gdx.graphics.getHeight();
 
 	public static final String TITLE = "Up and Away";
 

@@ -2,6 +2,7 @@ package com.mygdx.game.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import static com.badlogic.gdx.Gdx.graphics;
 
@@ -22,6 +23,7 @@ public class Paddle {
     protected float vspeed;
 
     protected Texture myTexture;
+    public Sprite mySprite;
 
 
     public Paddle(float xPos, float yPos, float width, float hspeed, float vspeed, Texture myTexture) {
@@ -31,7 +33,8 @@ public class Paddle {
         this.hspeed = hspeed;
         this.vspeed = vspeed;
         this.myTexture = myTexture;
-        height = 100;
+        height = 2;
+        mySprite = new Sprite(myTexture);
     }
 
     public float getX() { return xPos; }
@@ -48,7 +51,8 @@ public class Paddle {
 
     public void Update(float dt)
     {
-
+        mySprite.setPosition(xPos, yPos);
+        mySprite.setSize(width, height);
         UpdateyPos(dt);
         UpdatexPos(dt);
         FlipX();
@@ -81,7 +85,10 @@ public class Paddle {
             hspeed = hspeed * -1;
     }
 
-
+    public void Render(Texture myTexture)
+    {
+        //is this a copy i am passing or a reference?
+    }
     /*
     Will probably need getters and setters? for all parameters here. Implement when needed
      */

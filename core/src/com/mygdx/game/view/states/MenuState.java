@@ -5,9 +5,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Input;
 
-import static com.mygdx.game.view.MyGdxGame.HEIGHT;
-import static com.mygdx.game.view.MyGdxGame.WIDTH;
-
 /**
  * Created by viktor on 2017-06-28.
  */
@@ -19,7 +16,7 @@ public class MenuState extends State {
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, WIDTH / 2, HEIGHT / 2);
+        cam.setToOrtho(false, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 
         bg = new Texture("BackgroundUpAndAway.png");
         text = new Texture("ButtonPlayUpAndAway.png");
@@ -41,10 +38,8 @@ public class MenuState extends State {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
-        //sb.draw(bg, 0, 0);
         sb.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         sb.draw(text, cam.position.x - (text.getWidth() / 2), cam.position.y - (text.getHeight() / 2));
-        //sb.draw
 
         sb.end();
     }
