@@ -36,8 +36,7 @@ public class PaddleHandler {
         for(Paddle p : new ArrayList<Paddle>(list)) {
             p.Update(dt);
             if(p.atBottom()) {
-                p.mySprite.getTexture().dispose();
-                p.getMyTexture().dispose();
+                p.getSprite().getTexture().dispose();
                 list.remove(p);
             }
         }
@@ -46,9 +45,7 @@ public class PaddleHandler {
     public void drawPaddles(SpriteBatch sb) {
         //sb.begin();
         for (Paddle p : new ArrayList<Paddle>(list)) {
-            p.mySprite.draw(sb);
-
-            sb.draw(p.getMyTexture(), p.getX(), p.getY(), p.getWidth(), p.getHeight());
+            p.getSprite().draw(sb);
         }
         //sb.end();
     }

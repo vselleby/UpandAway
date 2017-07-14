@@ -18,6 +18,7 @@ class PlayState extends State {
     private float currentTimer;
     private final float timer = 1;
     private Paddle pad;
+    private Texture bg;
 
     public PlayState(GameStateManager gsm) {
 
@@ -32,6 +33,7 @@ class PlayState extends State {
         cam.update();
         ph = new PaddleHandler();
         currentTimer = timer;
+        bg = new Texture("BackgroundBasic.png");
     }
 
     @Override
@@ -45,7 +47,7 @@ class PlayState extends State {
             currentTimer -= dt;
         } else {
             currentTimer = timer;
-            ph.generatePaddle(0, 8, new Texture("ButtonPlayUpAndAway.png"), 75);
+            ph.generatePaddle(20, 8, new Texture("Floor.png"), 75);
         }
         ph.updatePaddles(dt);
     }
@@ -55,6 +57,7 @@ class PlayState extends State {
 
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
+        sb.draw(bg, 0, 0, 100, 100);
         ph.drawPaddles(sb);
 
         //pad.mySprite.draw(sb);

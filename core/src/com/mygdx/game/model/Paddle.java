@@ -23,7 +23,7 @@ public class Paddle {
     protected float vspeed;
 
     protected Texture myTexture;
-    public Sprite mySprite;
+    protected Sprite mySprite;
 
 
     public Paddle(float xPos, float yPos, float width, float hspeed, float vspeed, Texture myTexture) {
@@ -33,7 +33,7 @@ public class Paddle {
         this.hspeed = hspeed;
         this.vspeed = vspeed;
         this.myTexture = myTexture;
-        height = 2;
+        height = 4;
         mySprite = new Sprite(myTexture);
     }
 
@@ -48,6 +48,8 @@ public class Paddle {
     public float gethSpeed() { return hspeed; }
 
     public float getvSpeed() { return vspeed; }
+
+    public Sprite getSprite() { return mySprite; }
 
     public void Update(float dt)
     {
@@ -71,7 +73,7 @@ public class Paddle {
 
     public boolean atBottom()
     {
-        return yPos <= 0;
+        return yPos <= 0-height;
     }
 
     public Texture getMyTexture()
@@ -81,7 +83,7 @@ public class Paddle {
 
     private void FlipX()
     {
-        if ((xPos + width) >= Gdx.graphics.getWidth() || xPos <= 0)
+        if ((xPos + width) >= 100 || xPos <= 0)
             hspeed = hspeed * -1;
     }
 
